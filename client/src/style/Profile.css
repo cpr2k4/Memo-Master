@@ -1,0 +1,15 @@
+.profileBtn{
+    text-transform: none;
+    font-size: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+.profilePicExtra{
+    width: 200px;
+    border-radius: 50%;
+}
+
+.usernameStyle{
+    font-family:"Roboto",Helvetica, sans-serif;
+}

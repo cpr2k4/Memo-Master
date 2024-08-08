@@ -1,0 +1,8 @@
+.toolbar{
+    background-color: rgb(129, 56, 25);
+}
+.profilePic{
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
