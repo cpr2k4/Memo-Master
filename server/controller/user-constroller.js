@@ -30,6 +30,11 @@ export const handleSignup = async (req, res) => {
 
 export const handleLogin = async(req,res)=>{
     try{
+        console.log(req.sessionID);
+        // if(req.session.authenticated){
+        //     console.log("Arnold");
+        //     return res.json(req.session);
+        // }
         const {email,password} = req.body;
         const user = await User.findOne({email});
        
@@ -39,8 +44,9 @@ export const handleLogin = async(req,res)=>{
         if(password != user.password)
             return res.status(404).json({message:"Incorrect email or password"});
         
-        req.session.user = user; //set the session
-        res.status(200).json({message:"Login Successful..."});
+        req.session.authenticated = true;
+        req.session.name = user.username; //set the session
+        return res.status(200).json({message:req.session});
     }
     catch(err){
         return res.status(500).json({message:"Internal server error at handleLogin Controller backend..."});
