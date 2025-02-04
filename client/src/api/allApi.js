@@ -4,7 +4,6 @@ const URL = "http://localhost:8080";
 
 export const saveNoteToDb = async(data)=>{
     try{
-        // console.log(data,": At AllApi.js");
         let response = await axios.post(`${URL}/new`,data);
         console.log(response.data);
     }

@@ -1,0 +1,8 @@
+.note-card {
+    position: relative;
+  }
+  
+.note-card:hover .voice-note-overlay {
+    opacity: 1;
+}
+  

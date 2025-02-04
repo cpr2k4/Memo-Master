@@ -10,7 +10,7 @@ export const handleSignup = async (req, res) => {
         if (userName || userEmail) {
         return res.status(409).json({ failure: "User already exists!" });
         }
-         // Hash the password before saving it to the database
+        // Hash the password before saving it to the database
         // const saltRounds = 10;
         // const hashedPassword = await bcrypt.hash(password, saltRounds);
 

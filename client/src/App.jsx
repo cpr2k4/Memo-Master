@@ -16,6 +16,7 @@ import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import LoginContextProvider from "./context/LoginContextProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
+import VoiceNote from "./components/VoiceNote";
 
 function App() {
   let persistor = persistStore(store);
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/signup" element={<SignupPage/>}/>
                 <Route path="*" element={<NotFound />} />
+                <Route path="/voice-note" element={<VoiceNote />} />
               </Routes>
             </BrowserRouter>
           </PersistGate>

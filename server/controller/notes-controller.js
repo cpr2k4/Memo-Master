@@ -1,18 +1,24 @@
 import Note from "../models/Note.js";
 
-export const saveNoteToDb = async(req,res)=>{
-    try{
-        const note = req.body;
-        // console.log(note);
-        const newNote = new Note(note);
-        await newNote.save();
-        res.status(200).json({success:"Note saved in db..."});
-    }
-    catch(err){
-        console.log("Error while saving note in db in notes-controller...",err.message);
-        res.status(500).json({failure:"Note failed to be saved in db in notes-controller..."});
-    }
-}
+export const saveNoteToDb = async (req, res) => {
+  try {
+    const note = req.body;
+
+    // Create a new note object
+    const newNote = new Note({
+      title: note.title,
+      noteData: note.noteData,
+      voiceNoteUrl: note.voiceNoteUrl || null, // Optional field for voice note
+    });
+
+    await newNote.save();
+    res.status(200).json({ success: "Note saved in db..." });
+  } catch (err) {
+    console.log("Error while saving note in db in notes-controller...", err.message);
+    res.status(500).json({ failure: "Note failed to be saved in db in notes-controller..." });
+  }
+};
+
 
 export const getNotes = async(req,res)=>{
     try{

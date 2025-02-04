@@ -7,6 +7,7 @@ import MongoStore from 'connect-mongo';
 import { isAuthenticated } from "./middlewares/middleware.js";
 import { saveNoteToDb ,getNotes,getSingleNote,saveUpdatedNote,deleteNote} from "./controller/notes-controller.js";
 import { handleSignup,handleLogin,handleLogout } from "./controller/user-constroller.js";
+import bodyParser from "body-parser";
 
 const port = 8080;
 
@@ -16,6 +17,10 @@ dbConnect();
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Increase payload limit
+app.use(bodyParser.json({ limit: "50mb" })); // Adjust limit as needed
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 app.use(cors({credentials:true}));
 // app.use(cors({
@@ -45,7 +50,7 @@ app.listen(port,()=>{
 app.get("/",(req,res)=>{
     res.send("hello")
 })
-
+    
 app.get("/register",(req,res)=>{
     let {name="unknown"} = req.query;
     req.session.name = name;
